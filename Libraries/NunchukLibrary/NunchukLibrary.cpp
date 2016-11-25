@@ -5,7 +5,7 @@
 #define ADDRESS 0x52
 
 
-//Data vesturen via i2c
+//Send data throug i2c
 void NunchukLibrary::AN_sendByte(uint8_t data, uint8_t location)
 {
   Wire.beginTransmission(ADDRESS);
@@ -18,7 +18,7 @@ void NunchukLibrary::AN_sendByte(uint8_t data, uint8_t location)
   _delay_ms(10);
 }
 
-//Begin met het uitlezen van de nunchuk
+//Request data from the nunchuk
 void NunchukLibrary::ANinit()
 {
   Wire.begin();
@@ -27,13 +27,14 @@ void NunchukLibrary::ANinit()
   AN_sendByte(0x00, 0xFB);
 
   _delay_ms(100);
+  //Calibrate the nunchuk
   ANupdate();
   ANupdate();
-  beginPossX = analogX;
+  beginPossX = analogX;           
   beginPossY = analogY;
 }
 
-//Herlaad de waarden die de nunchuk doorgeeft.
+//Update the values of the nunchuk
 void NunchukLibrary::ANupdate()
 {
   int count = 0;
@@ -46,7 +47,7 @@ void NunchukLibrary::ANupdate()
     values[count] = Wire.read();
     count++;
   }
-
+//Put the values in variables
   analogX = values[0];
   analogY = values[1];
   accelX = (values[2] << 2) | ((values[5] >> 2) & 3);
@@ -57,7 +58,7 @@ void NunchukLibrary::ANupdate()
 
   AN_sendByte(0x00, 0x00);
 }
-
+//Check in what direction the nunchuk tumbstick is moved and give it to the variable "status"
 void NunchukLibrary::UpdateLocation()
 {
 if((analogX - beginPossX) > 5)		status = 2;//X AXIS RIGHT
