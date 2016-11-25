@@ -233,6 +233,12 @@
     <Compile Include="GameField.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="Player.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Player.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="__vm\.watterott_display_1.vsarduino.h">
       <SubType>compile</SubType>
     </Compile>

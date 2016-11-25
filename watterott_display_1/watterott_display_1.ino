@@ -1,4 +1,4 @@
-//#include "Block.h"
+#include "Player.h"
 #include "arduino.h"
 #include "GameField.h"
 #include <GraphicsLib.h>
@@ -13,5 +13,6 @@ int main(void){
 	init();					//init display
 	lcd.begin();			//spi-clk=SPI_CLOCK_DIV4
 							//clear screen
-	GameField gameField(lcd, 1);
+	Player playerA = Player();
+	GameField gameField = GameField(lcd, 1, playerA);
 }
