@@ -6,6 +6,7 @@
  */ 
  #include "GameField.h"
  #include "Player.h"
+ #include "Block.h"
 #include <arduino.h>
 #include "MI0283QT9.h"
 
@@ -22,6 +23,7 @@
 	game = game_g;
 	lcd = lcd_g;
 	playerA = playerA_g;
+	Block blockField[9][11];
 	uint8_t field[9][11] = {
 			{3,0,2,2,0,0,0,0,0,0,0},
 			{0,1,2,1,0,1,0,1,0,1,0},

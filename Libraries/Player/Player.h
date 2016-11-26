@@ -9,7 +9,9 @@ class Player{
 		int getxPos();
 		int getyPos();
 	private:
-		int xPos, yPos;				//are the pixel coordinates of the topleft corner of the player
+		uint8_t xPos, yPos;			//block where player is standing on
+		uint8_t xStep, yStep;		//is the number of steps ofset from xPos and Ypos it is the offset down and right
+					//are the pixel coordinates of the topleft corner of the player
 };
 
 #endif

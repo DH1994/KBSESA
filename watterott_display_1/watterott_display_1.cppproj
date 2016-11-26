@@ -227,6 +227,12 @@
     <Folder Include="__vm\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Block.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Block.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="GameField.cpp">
       <SubType>compile</SubType>
     </Compile>
