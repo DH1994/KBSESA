@@ -20,6 +20,6 @@ private:
     int accelZ;
 	int beginPossX;
 	int beginPossY;
-	uint8_t status;
+	uint8_t status=0;
 };
 #endif

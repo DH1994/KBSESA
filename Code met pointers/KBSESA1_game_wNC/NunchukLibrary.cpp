@@ -68,8 +68,8 @@ uint8_t NunchukLibrary::ANupdate()
   return status;
 }
 
-uint8_t getStatus(){
+uint8_t NunchukLibrary::getStatus(){
   return status;
 }
-}
+
 

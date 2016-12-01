@@ -2,10 +2,11 @@
 #define Player_h
 #include "Arduino.h"
 #include "NunchukLibrary.h"
+#include "Map.h"
 
 class Player{
 	public:
-		Player(NunchukLibrary* NC_g);
+		Player(NunchukLibrary* NC_g, Map* MP_g);
 		void setPosition(uint8_t xPos_g, uint8_t yPos_g);
 		bool updatePlayer(uint8_t dir, uint8_t FV_L, uint8_t FV_R, uint8_t FV_U, uint8_t FV_D);
 		uint8_t getxPos();
@@ -23,6 +24,7 @@ class Player{
 		uint8_t xStep, yStep;			//are the steps offset from xPos and yPos
 		uint8_t stepsize;
     NunchukLibrary* NC;
+    Map* MP;
 };
 
 #endif

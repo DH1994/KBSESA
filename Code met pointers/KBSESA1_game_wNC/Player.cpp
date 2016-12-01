@@ -1,11 +1,12 @@
 #include "Player.h"
 #include "arduino.h"
-#include "GameField.h"
+#include "Map.h"
 #define SIZE 24
 //#define DEBUG
 
-Player::Player(NunchukLibrary* NC_g,){
+Player::Player(NunchukLibrary* NC_g, Map* MP_g){
   NC = NC_g;
+  MP = MP_g;
 }
 
 void Player::setPosition(uint8_t xPos_g, uint8_t yPos_g){

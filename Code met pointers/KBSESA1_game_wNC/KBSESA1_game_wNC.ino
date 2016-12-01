@@ -15,29 +15,23 @@
 #define DEBUGON
 #define DEBUG
 
-uint8_t** level1 = new uint8_t*[10];
-for (uint8_t i = 0; i < 10; ++i) {
-  level1[i] = new uint8_t*[12];
-}
-/*
-uint8_t level1[10][12] ={
-    {3,0,0,0,0,0,0,0,0,0,0,1},
-    {0,1,2,1,0,1,0,1,0,1,0,1},
-    {0,0,0,0,0,0,0,0,0,0,0,1},
-    {0,1,0,1,0,1,0,1,0,1,0,1},
-    {0,0,0,0,0,2,0,0,0,0,0,1},
-    {0,1,0,1,0,1,0,1,0,1,0,1},
-    {0,0,0,0,0,0,0,0,2,0,2,1},
-    {0,1,0,1,0,1,0,1,0,1,0,1},
-    {0,0,0,0,0,0,0,0,2,0,4,1},
-    {1,1,1,1,1,1,1,1,1,1,1,1}
-  };
-  */
-Map* mp = new Map(*level1);
+uint8_t level1[99] ={
+  3,0,0,0,0,0,0,0,0,0,0,
+  0,1,2,1,0,1,0,1,0,1,0,
+  0,0,0,0,0,0,0,0,0,0,0,
+  0,1,0,1,0,1,0,1,0,1,0,
+  0,0,0,0,0,2,0,0,0,0,0,
+  0,1,0,1,0,1,0,1,0,1,0,
+  0,0,0,0,0,0,0,0,2,0,2,
+  0,1,0,1,0,1,0,1,0,1,0,
+  0,0,0,0,0,0,0,0,2,0,4};
+uint8_t* level = level1;
+
+Map* MP = new Map(*level);
 MI0283QT9* lcd = new MI0283QT9();
 NunchukLibrary* NC = new NunchukLibrary();
-Player* playerNC = new Player(NC, mp);
-GameField* gameField = new GameField(lcd, mp);
+Player* playerNC = new Player(NC, MP);
+GameField* gameField = new GameField(lcd, MP);
 
 volatile uint8_t timer2_counter;    //DIT IS DE TIMER
 char tmp[128];
@@ -55,10 +49,10 @@ int main(){
 		NC_status = NC->ANupdate();
 		uint8_t playerXpos = playerNC->getxPos();
 		uint8_t playerYpos = playerNC->getyPos();
-		uint8_t left = mp->getFieldValue(playerXpos - 1, playerYpos);
-		uint8_t right = mp->getFieldValue(playerXpos + 1, playerYpos);
-		uint8_t up = mp->getFieldValue(playerXpos, playerYpos - 1);
-		uint8_t down = mp->getFieldValue(playerXpos, playerYpos + 1);
+		uint8_t left = MP->getFieldValue(playerXpos - 1, playerYpos);
+		uint8_t right = MP->getFieldValue(playerXpos + 1, playerYpos);
+		uint8_t up = MP->getFieldValue(playerXpos, playerYpos - 1);
+		uint8_t down = MP->getFieldValue(playerXpos, playerYpos + 1);
 		bool boolkip = playerNC->updatePlayer(NC_status, left, right, up, down);
 		if(boolkip){
 			int x = playerNC->getOldXPosPx();
