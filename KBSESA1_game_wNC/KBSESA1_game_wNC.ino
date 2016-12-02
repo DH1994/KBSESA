@@ -1,3 +1,5 @@
+#include "OptionMenu.h"
+#include "Menu.h"
 #include <digitalWriteFast.h>
 #include <SPI.h>
 
@@ -15,16 +17,18 @@
 #include <Wire.h>
 #include "NunchukLibrary.h"
 #include "Player.h"
+#include "Menu.h"
 
 #define ADDRESS 0x52
 #define SIZE 24									//is the amount of pixels of on block the game has 9 (y) by 11 (x) blocks and is 216 by 264 px.
 #define OFFSETX 48
 #define OFFSETY 13
-//#define DEBUG
+#define DEBUG
 MI0283QT9 lcd;
 NunchukLibrary NC;
 Player playerNC;
 GameField gameField;
+Menu menu;
 
 volatile uint8_t timer2_counter;    //DIT IS DE TIMER
 char tmp[128];
@@ -42,6 +46,7 @@ int main(){
 	Serial.println("setup");
 	#endif
 	playerNC.setPosition(gameField.getPlayerX(), gameField.getPlayerY());
+	menu.Menu(lcd);
 
 	while(1){
 		#ifdef DEBUG
