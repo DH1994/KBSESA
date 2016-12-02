@@ -6,6 +6,7 @@
 #include "arduino.h"
 #include "Wire.h"
 #include "NunchukLibrary.h"
+
 #define ADDRESS 0x52
 
 NunchukLibrary::NunchukLibrary(){
@@ -51,12 +52,11 @@ uint8_t NunchukLibrary::ANupdate()
 //Put the values in variables
   analogX = values[0];
   analogY = values[1];
-  accelX = (values[2] << 2) | ((values[5] >> 2) & 3);
-  accelY = (values[3] << 2) | ((values[5] >> 4) & 3);
-  accelZ = (values[4] << 2) | ((values[5] >> 6) & 3);
+  //accelX = (values[2] << 2) | ((values[5] >> 2) & 3);
+  //accelY = (values[3] << 2) | ((values[5] >> 4) & 3);
+  //accelZ = (values[4] << 2) | ((values[5] >> 6) & 3);
   zButton = !((values[5] >> 0) & 1);
   cButton = !((values[5] >> 1) & 1);
-
   AN_sendByte(0x00, 0x00);
 
   //Check in what direction the nunchuk tumbstick is moved and give it to the variable "status"

@@ -64,10 +64,10 @@
   </avrgcc.compiler.symbols.DefSymbols>
   <avrgcc.compiler.directories.IncludePaths>
     <ListValues>
-      <Value>C:/Users/Rick/Documents/Arduino/libraries/GraphicsLib</Value>
-      <Value>C:/Users/Rick/Documents/Arduino/libraries/MI0283QT9</Value>
       <Value>C:/Users/Rick/Documents/Arduino/libraries/digitalWriteFast</Value>
       <Value>C:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/SPI/src</Value>
+      <Value>C:/Users/Rick/Documents/Arduino/libraries/MI0283QT9</Value>
+      <Value>C:/Users/Rick/Documents/Arduino/libraries/GraphicsLib</Value>
       <Value>C:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/Wire/src</Value>
       <Value>C:/Users/Rick/Documents/Arduino/libraries/digitalWriteFast/utility</Value>
       <Value>C:/Users/Rick/Documents/Arduino/libraries/GraphicsLib/utility</Value>
@@ -106,10 +106,10 @@
   </avrgcccpp.compiler.symbols.DefSymbols>
   <avrgcccpp.compiler.directories.IncludePaths>
     <ListValues>
-      <Value>C:/Users/Rick/Documents/Arduino/libraries/GraphicsLib</Value>
-      <Value>C:/Users/Rick/Documents/Arduino/libraries/MI0283QT9</Value>
       <Value>C:/Users/Rick/Documents/Arduino/libraries/digitalWriteFast</Value>
       <Value>C:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/SPI/src</Value>
+      <Value>C:/Users/Rick/Documents/Arduino/libraries/MI0283QT9</Value>
+      <Value>C:/Users/Rick/Documents/Arduino/libraries/GraphicsLib</Value>
       <Value>C:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/Wire/src</Value>
       <Value>C:/Users/Rick/Documents/Arduino/libraries/digitalWriteFast/utility</Value>
       <Value>C:/Users/Rick/Documents/Arduino/libraries/GraphicsLib/utility</Value>
@@ -137,8 +137,8 @@
     </ToolchainSettings>
     <VMSETTING_IncludePaths>C:/Program Files (x86)/Arduino/libraries;C:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries;C:/Users/Rick/Documents/Arduino/libraries;C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino;C:/Program Files (x86)/Arduino/hardware/arduino/avr/variants/standard;../../../KBSESA1_game_wNC;C:/Program Files (x86)/Arduino/hardware/tools/avr/avr/include/;C:/Program Files (x86)/Arduino/hardware/tools/avr//avr/include/avr/;C:/Program Files (x86)/Arduino/hardware/tools/avr/lib/gcc/avr/4.8.1/include;C:/Users/Rick/Documents/Arduino/libraries/GraphicsLib;C:/Users/Rick/Documents/Arduino/libraries/GraphicsLib/utility;C:/Users/Rick/Documents/Arduino/libraries/MI0283QT9;C:/Users/Rick/Documents/Arduino/libraries/MI0283QT9/utility;C:/Users/Rick/Documents/Arduino/libraries/digitalWriteFast;C:/Users/Rick/Documents/Arduino/libraries/digitalWriteFast/utility;C:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/SPI/src;C:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/SPI/src/utility;C:/Users/Rick/Documents/Arduino/libraries/TinyWire;C:/Users/Rick/Documents/Arduino/libraries/TinyWire/utility;C:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/Wire/src;C:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/Wire/src/utility;C:/Program Files (x86)/Atmel/Studio/7.0/Extensions/1yshlmvw.s1z/Micro Platforms/default/debuggers/VM_DBG;C:/Program Files (x86)/Atmel/Studio/7.0/Extensions/1yshlmvw.s1z/Micro Platforms/default/debuggers;</VMSETTING_IncludePaths>
     <VisualMicroSettings>
-      <VisualMicroSettings xmlns="">
-        <arduino.upload.port>COM8</arduino.upload.port>
+      <VisualMicroSettings>
+        <arduino.upload.port>COM7</arduino.upload.port>
       </VisualMicroSettings>
     </VisualMicroSettings>
   </PropertyGroup>
@@ -166,10 +166,10 @@
   </avrgcc.compiler.symbols.DefSymbols>
   <avrgcc.compiler.directories.IncludePaths>
     <ListValues>
-      <Value>C:/Users/Rick/Documents/Arduino/libraries/GraphicsLib</Value>
-      <Value>C:/Users/Rick/Documents/Arduino/libraries/MI0283QT9</Value>
       <Value>C:/Users/Rick/Documents/Arduino/libraries/digitalWriteFast</Value>
       <Value>C:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/SPI/src</Value>
+      <Value>C:/Users/Rick/Documents/Arduino/libraries/MI0283QT9</Value>
+      <Value>C:/Users/Rick/Documents/Arduino/libraries/GraphicsLib</Value>
       <Value>C:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/Wire/src</Value>
       <Value>C:/Users/Rick/Documents/Arduino/libraries/digitalWriteFast/utility</Value>
       <Value>C:/Users/Rick/Documents/Arduino/libraries/GraphicsLib/utility</Value>
@@ -208,10 +208,10 @@
   </avrgcccpp.compiler.symbols.DefSymbols>
   <avrgcccpp.compiler.directories.IncludePaths>
     <ListValues>
-      <Value>C:/Users/Rick/Documents/Arduino/libraries/GraphicsLib</Value>
-      <Value>C:/Users/Rick/Documents/Arduino/libraries/MI0283QT9</Value>
       <Value>C:/Users/Rick/Documents/Arduino/libraries/digitalWriteFast</Value>
       <Value>C:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/SPI/src</Value>
+      <Value>C:/Users/Rick/Documents/Arduino/libraries/MI0283QT9</Value>
+      <Value>C:/Users/Rick/Documents/Arduino/libraries/GraphicsLib</Value>
       <Value>C:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/Wire/src</Value>
       <Value>C:/Users/Rick/Documents/Arduino/libraries/digitalWriteFast/utility</Value>
       <Value>C:/Users/Rick/Documents/Arduino/libraries/GraphicsLib/utility</Value>
@@ -239,8 +239,8 @@
     </ToolchainSettings>
     <VMSETTING_IncludePaths>C:/Program Files (x86)/Arduino/libraries;C:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries;C:/Users/Rick/Documents/Arduino/libraries;C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino;C:/Program Files (x86)/Arduino/hardware/arduino/avr/variants/standard;../../../KBSESA1_game_wNC;C:/Program Files (x86)/Arduino/hardware/tools/avr/avr/include/;C:/Program Files (x86)/Arduino/hardware/tools/avr//avr/include/avr/;C:/Program Files (x86)/Arduino/hardware/tools/avr/lib/gcc/avr/4.8.1/include;C:/Users/Rick/Documents/Arduino/libraries/GraphicsLib;C:/Users/Rick/Documents/Arduino/libraries/GraphicsLib/utility;C:/Users/Rick/Documents/Arduino/libraries/MI0283QT9;C:/Users/Rick/Documents/Arduino/libraries/MI0283QT9/utility;C:/Users/Rick/Documents/Arduino/libraries/digitalWriteFast;C:/Users/Rick/Documents/Arduino/libraries/digitalWriteFast/utility;C:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/SPI/src;C:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/SPI/src/utility;C:/Users/Rick/Documents/Arduino/libraries/TinyWire;C:/Users/Rick/Documents/Arduino/libraries/TinyWire/utility;C:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/Wire/src;C:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/Wire/src/utility;C:/Program Files (x86)/Atmel/Studio/7.0/Extensions/1yshlmvw.s1z/Micro Platforms/default/debuggers/VM_DBG;C:/Program Files (x86)/Atmel/Studio/7.0/Extensions/1yshlmvw.s1z/Micro Platforms/default/debuggers;</VMSETTING_IncludePaths>
     <VisualMicroSettings>
-      <VisualMicroSettings xmlns="">
-        <arduino.upload.port>COM8</arduino.upload.port>
+      <VisualMicroSettings>
+        <arduino.upload.port>COM7</arduino.upload.port>
       </VisualMicroSettings>
     </VisualMicroSettings>
   </PropertyGroup>
@@ -257,6 +257,12 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="GameField.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Map.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Map.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="NunchukLibrary.cpp">

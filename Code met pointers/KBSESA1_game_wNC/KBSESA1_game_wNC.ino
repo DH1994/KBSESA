@@ -15,54 +15,42 @@
 #define DEBUGON
 #define DEBUG
 
-uint8_t level1[99] ={
-  3,0,0,0,0,0,0,0,0,0,0,
-  0,1,2,1,0,1,0,1,0,1,0,
-  0,0,0,0,0,0,0,0,0,0,0,
-  0,1,0,1,0,1,0,1,0,1,0,
-  0,0,0,0,0,2,0,0,0,0,0,
-  0,1,0,1,0,1,0,1,0,1,0,
-  0,0,0,0,0,0,0,0,2,0,2,
-  0,1,0,1,0,1,0,1,0,1,0,
-  0,0,0,0,0,0,0,0,2,0,4};
-uint8_t* level = level1;
+uint8_t level1[9][11] ={
+  {3,0,0,0,0,0,0,0,0,0,0},
+  {0,1,2,1,0,1,0,1,0,1,0},
+  {0,0,0,0,0,0,0,0,0,0,0},
+  {0,1,0,1,0,1,0,1,0,1,0},
+  {0,0,0,0,0,2,0,0,0,0,0},
+  {0,1,0,1,0,1,0,1,0,1,0},
+  {0,0,0,0,0,0,0,0,2,0,2},
+  {0,1,0,1,0,1,0,1,0,1,0},
+  {0,0,0,0,0,0,0,0,2,0,4}
+  };
 
-Map* MP = new Map(*level);
-MI0283QT9* lcd = new MI0283QT9();
-NunchukLibrary* NC = new NunchukLibrary();
-Player* playerNC = new Player(NC, MP);
-GameField* gameField = new GameField(lcd, MP);
+Map* MP;
+MI0283QT9* lcd;
+NunchukLibrary* NC;
+Player* playerNC;
+GameField* gameField;
 
 volatile uint8_t timer2_counter;    //DIT IS DE TIMER
 char tmp[128];
 
-int main(){
+int main(void){
  	init();
+	MP = new Map(level1);
+	lcd = new MI0283QT9();
 	lcd->begin();
-	gameField->GFInit(1);
-	#ifdef DEBUGON
-	#endif
-	playerNC->setPosition(gameField->getPlayerX(), gameField->getPlayerY());
-
+	NC = new NunchukLibrary();
+	playerNC = new Player(NC, MP);
+	gameField = new GameField(lcd, MP, playerNC);
 	while(1){
-		uint8_t NC_status = 0;
-		NC_status = NC->ANupdate();
-		uint8_t playerXpos = playerNC->getxPos();
-		uint8_t playerYpos = playerNC->getyPos();
-		uint8_t left = MP->getFieldValue(playerXpos - 1, playerYpos);
-		uint8_t right = MP->getFieldValue(playerXpos + 1, playerYpos);
-		uint8_t up = MP->getFieldValue(playerXpos, playerYpos - 1);
-		uint8_t down = MP->getFieldValue(playerXpos, playerYpos + 1);
-		bool boolkip = playerNC->updatePlayer(NC_status, left, right, up, down);
-		if(boolkip){
-			int x = playerNC->getOldXPosPx();
-			int y = playerNC->getOldYPosPx();
-			int playerX = playerNC->getxPosPx();
-			int playerY = playerNC->getyPosPx();
-			gameField->updateGameField(x, y, SIZE, SIZE, playerX, playerY);
-			playerNC->updatePos();
+		NC->ANupdate();
+		if(playerNC->updatePlayer()){
+			gameField->updateGameField_pl_nc();
 		}
 	}
+	return 0;
 }
 /*
 ISR(TIMER2_COMPA_vect)        // interrupt service routine
