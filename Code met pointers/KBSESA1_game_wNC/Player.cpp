@@ -1,8 +1,8 @@
 #include "Player.h"
 #include "arduino.h"
 #include "Map.h"
-#define SIZE 24
-//#define DEBUG
+
+#define SIZE 24				//is the size of one block
 
 Player::Player(NunchukLibrary* NC_g, Map* MP_g){
   NC = NC_g;
@@ -12,96 +12,102 @@ Player::Player(NunchukLibrary* NC_g, Map* MP_g){
 void Player::setPosition(uint8_t xPos_g, uint8_t yPos_g){
 	xPos = xPos_g;
 	yPos = yPos_g;
+	oldXPos = xPos_g;
+	oldYPos = xPos_g;
 	xStep = 0;
 	yStep = 0;
-	stepsize = 3;
+	stepsize = 4;
 }
 
-bool Player::updatePlayer(uint8_t dir, uint8_t FV_L, uint8_t FV_R, uint8_t FV_U, uint8_t FV_D){
+bool Player::updatePlayer(){
 	bool returnbool = false;
-	switch (dir)
+	/*
+	if((xPos + yPos) == 0){
+		//check if block contains a power up
+	}
+	*/
+	switch (NC->getStatus())							//switches to the direction the nunchuck is positioned options are left - right - up - down
 	{
-		case 3:
-			if((xStep == 0)){			//checks if their is an ability to move up or down because of the offset on the other axis
-				if(yStep == 0){
-					if(!((FV_U == 1) || (FV_U == 2))){
-						if(yPos > 0){
-							yPos--;
-							yStep = SIZE - stepsize;
-							returnbool = true;
-						}
-					}
-				} else {
-					yStep -= stepsize;
-					returnbool = true;
-				}
-			}
-		break;
 
-		case 4:
-		  if((xStep == 0)){			//checks if their is an ability to move up or down because of the offset on the other axis
-				if(yStep == 0){
-					if(!((FV_D == 1) || (FV_D == 2))){
-						yStep += stepsize;
-						returnbool = true;
-					}
-				} else {
-					yStep += stepsize;
-					if (yStep == 24) {
-						yStep = 0;
-						yPos++;
-					}
-					returnbool = true;
-				}
-			}
-		break;
-
-		case 1:
-			if(yStep == 0){
-				if((xStep == 0)){
-					if(!((FV_L == 1) || (FV_L == 2))){
-						if(xPos > 0){
-							xPos--;
+		case 1:											//LEFT
+			if(yStep == 0){								//checks if their is an ability to move up or down because of the offset on the other axis
+				if((xStep == 0)){						//checks if the player is entering a new block 
+					if(!((MP->getFieldValue(xPos - 1, yPos) == 1) || (MP->getFieldValue(xPos - 1, yPos) == 2))){		//checks if the block where the player is moving to can be entered
+						if(xPos > 0){					//checks if player is not moving out of the field
+							xPos--;						//update position
 							xStep = SIZE - stepsize;
-							returnbool = true;
+							returnbool = true;			//makes sure updatePlayer can give feedback to main about movement
 						}
 					}
 				} else {
-					xStep -= stepsize;
-					returnbool = true;
+					xStep -= stepsize;					//updates step (position)
+					returnbool = true;					//makes sure updatePlayer can give feedback to main about movement
 				}
 			}
 		break;
 
-		case 2:
-			if(yStep == 0){
-				if((xStep == 0)){
-					if(!((FV_R == 1) || (FV_R == 2))){
-						xStep += stepsize;
-						returnbool = true;
+		case 2:											//RIGHT
+			if(yStep == 0){								//checks if their is an ability to move up or down because of the offset on the other axis
+				if((xStep == 0)){						//checks if the player is entering a new block 
+					if(!((MP->getFieldValue(xPos + 1, yPos) == 1) || (MP->getFieldValue(xPos + 1, yPos) == 2))){		//checks if the block where the player is moving to can be entered
+						xStep += stepsize;				//updates step (position)
+						returnbool = true;				//makes sure updatePlayer can give feedback to main about movement
 					}
 				} else {
-					xStep += stepsize;
-					if (xStep >= 24) {
-						xStep = 0;
+					xStep += stepsize;					//updates step (position)
+					if (xStep >= 24) {					//if step update means that player has entered a block without offset  
+						xStep = 0;						//update position
 						xPos++;
 					}
-					returnbool = true;
+					returnbool = true;					//makes sure updatePlayer can give feedback to main about movement
 				}
 			}
 		break;
-	}
-	return returnbool;	
-}
 
-uint8_t Player::getxPos(){
-	return xPos;
+		case 3:											//UP
+			if((xStep == 0)){							//checks if their is an ability to move up or down because of the offset on the other axis
+				if(yStep == 0){							//checks if the player is entering a new block 
+					if(!((MP->getFieldValue(xPos, yPos - 1) == 1) || (MP->getFieldValue(xPos, yPos - 1) == 2))){		//checks if the block where the player is moving to can be entered
+						if(yPos > 0){
+							yPos--;						//update position
+							yStep = SIZE - stepsize;
+							returnbool = true;			//makes sure updatePlayer can give feedback to main about movement
+						}
+					}
+				} else {
+					yStep -= stepsize;					//updates step (position)
+					returnbool = true;					//makes sure updatePlayer can give feedback to main about movement
+				}
+			}
+		break;
+
+		case 4:											//DOWN			
+		  if((xStep == 0)){								//checks if their is an ability to move up or down because of the offset on the other axis
+				if(yStep == 0){							//checks if the player is entering a new block 
+					if(!((MP->getFieldValue(xPos, yPos + 1) == 1) || (MP->getFieldValue(xPos, yPos + 1) == 2))){		//checks if the block where the player is moving to can be entered
+						yStep += stepsize;				//updates step (position)
+						returnbool = true;				//makes sure updatePlayer can give feedback to main about movement
+					}
+				} else {
+					yStep += stepsize;					//updates step (position)
+					if (yStep >= 24) {					//if step update means that player has entered a block without offset 
+						yStep = 0;						//update position
+						yPos++;
+					}
+					returnbool = true;					//makes sure updatePlayer can give feedback to main about movement
+				}
+			}
+		break;
+		
+	}
+	return returnbool;	//is return true if the players position has been updated
 }
-uint8_t Player::getyPos(){
-	return yPos;
-}
+/************************************************************************/
+/* Check player.h for information about those functions                 */
+/************************************************************************/
 int Player::getxPosPx(){
-	return (xPos * SIZE) + xStep;
+	
+	return xPos * SIZE + xStep;
 }
 int Player::getyPosPx(){
 	return yPos * SIZE + yStep;
