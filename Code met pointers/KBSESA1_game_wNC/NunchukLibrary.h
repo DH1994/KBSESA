@@ -7,7 +7,9 @@ public:
     void AN_sendByte(uint8_t data, uint8_t location);
     void NunchukLoop();
     uint8_t getStatus();
-    uint8_t ANupdate();    	
+    uint8_t ANupdate(); 
+	uint8_t getCButton();
+	uint8_t getZButton();   	
 private:
     uint8_t analogX;
     uint8_t analogY;

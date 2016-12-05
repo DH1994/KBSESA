@@ -72,4 +72,12 @@ uint8_t NunchukLibrary::getStatus(){
   return status;
 }
 
+uint8_t NunchukLibrary::getZButton()
+{
+	return zButton;
+}
 
+uint8_t NunchukLibrary::getCButton()
+{
+	return cButton;
+}
